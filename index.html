@@ -206,11 +206,64 @@ body {
 <p class="fw-bold mt-2" id="tamu-nama"></p>
 <a class="btn btn-lg btn-outline-dark mt-3" href="#" id="btn-undangan" onclick="mulaiUndangan(); return false;" style="color: #e7c9c1; font-size: 1rem;">Lihat Undangan</a>
 <!-- Video Overlay -->
+    <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Splash Screen</title>
+    <style>
+        /* Gaya tambahan untuk body agar tidak ada scrollbar dari konten utama sebelum video selesai */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Sembunyikan scrollbar awal */
+        }
+
+        /* Gaya untuk konten utama Anda, yang akan terlihat setelah video */
+        #main-content {
+            display: none; /* Awalnya sembunyikan konten utama */
+            padding: 20px;
+            font-family: sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
 <div id="video-overlay" style="display: none; position: fixed; top:0; left:0; width: 100%; height: 100%; background-color: black; z-index: 9999;">
   <video id="cover-video" autoplay muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
     <source src="https://github.com/user-attachments/assets/1a4b31b9-2591-4fe8-b351-2ad99e797348" type="video/gif">
   </video>
 </div>
+    <div id="main-content">
+        <h1>Selamat Datang di Website Saya!</h1>
+        <p>Ini adalah konten utama halaman yang akan muncul setelah video intro selesai diputar.</p>
+        <img src="https://via.placeholder.com/600x400" alt="Placeholder Image">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoOverlay = document.getElementById('video-overlay');
+            const coverVideo = document.getElementById('cover-video');
+            const mainContent = document.getElementById('main-content'); // Dapatkan referensi ke konten utama
+
+            // Tampilkan overlay video saat halaman dimuat
+            videoOverlay.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Pastikan scrollbar tersembunyi selama video
+
+            // Dengarkan event 'ended' pada video
+            coverVideo.addEventListener('ended', function() {
+                // Sembunyikan overlay setelah video selesai diputar
+                videoOverlay.style.display = 'none';
+                
+                // Tampilkan konten utama halaman
+                mainContent.style.display = 'block';
+                document.body.style.overflow = 'auto'; // Aktifkan kembali scrollbar jika kontennya panjang
+            });
+        });
+    </script>
+
+</body>
+</html>
 
 </main>
 </section>
