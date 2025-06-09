@@ -179,6 +179,26 @@ body {
 <p class="fw-bold mt-2" id="tamu-nama"></p>
 <a class="btn btn-lg btn-outline-dark mt-3" href="#" id="btn-undangan" onclick="mulaiUndangan(); return false;" style="color: #e7c9c1; font-size: 1rem;">Lihat Undangan</a>
 <!-- Video Overlay -->
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Splash Screen</title>
+    <style>
+        /* Gaya tambahan untuk body agar tidak ada scrollbar dari konten utama sebelum video selesai */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Sembunyikan scrollbar awal */
+        }
+
+        /* Gaya untuk konten utama Anda, yang akan terlihat setelah video */
+        #main-content {
+            display: none; /* Awalnya sembunyikan konten utama */
+            padding: 20px;
+            font-family: sans-serif;
+            text-align: center;
+        }
+    </style>
 <div id="video-overlay" style="display: none; position: fixed; top:0; left:0; width: 100%; height: 100%; background-color: black; z-index: 9999;">
   <video id="cover-video" autoplay muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
     <source src="https://github.com/user-attachments/assets/1a4b31b9-2591-4fe8-b351-2ad99e797348" type="video/mp4">
