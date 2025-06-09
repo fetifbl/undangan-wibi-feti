@@ -209,50 +209,68 @@ body {
 <div id="video-overlay" style="display: none; position: fixed; top:0; left:0; width: 100%; height: 100%; background-color: black; z-index: 9999;">
   <video id="cover-video" autoplay muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
     <source src="https://github.com/user-attachments/assets/1a4b31b9-2591-4fe8-b351-2ad99e797348" type="video/gif">
- <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const videoOverlay = document.getElementById('video-overlay');
-    const coverVideo = document.getElementById('cover-video');
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Splash Screen</title>
+    <style>
+        /* Gaya tambahan untuk body agar tidak ada scrollbar dari konten utama sebelum video selesai */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Sembunyikan scrollbar awal */
+        }
 
-    // Tampilkan overlay video saat halaman dimuat
-    videoOverlay.style.display = 'block'; // Mengubah display dari 'none' menjadi 'block'
+        /* Gaya untuk konten utama Anda, yang akan terlihat setelah video */
+        #main-content {
+            display: none; /* Awalnya sembunyikan konten utama */
+            padding: 20px;
+            font-family: sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
 
-    // Opsional: Untuk memastikan video dimulai dari awal setiap kali halaman dimuat
-    // coverVideo.currentTime = 0; 
-    
-    // Dengarkan event 'ended' pada video
-    coverVideo.addEventListener('ended', function() {
-      // Sembunyikan overlay setelah video selesai diputar
-      videoOverlay.style.display = 'none';
-      
-      // Opsional: Hapus video dari DOM untuk membebaskan memori
-      // videoOverlay.remove();
-      
-      // Opsional: Jika ada konten lain di halaman yang harus muncul setelah video, tampilkan di sini
-      // Contoh: document.getElementById('main-content').style.display = 'block';
-    });
+    <div id="video-overlay" style="display: none; position: fixed; top:0; left:0; width: 100%; height: 100%; background-color: black; z-index: 9999;">
+      <video id="cover-video" autoplay muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+        <source src="https://github.com/user-attachments/assets/1a4b31b9-2591-4fe8-b351-2ad99e797348" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
 
-    // Opsional: Jika Anda ingin memberikan kontrol untuk melewati video (misalnya, tombol skip)
-    // Anda bisa menambahkan tombol di dalam #video-overlay
-    // dan menambahkan event listener untuk menyembunyikan overlay saat tombol itu diklik.
-    // Contoh:
-    /*
-    const skipButton = document.createElement('button');
-    skipButton.innerText = 'Lewati Video';
-    skipButton.style.position = 'absolute';
-    skipButton.style.top = '20px';
-    skipButton.style.right = '20px';
-    skipButton.style.zIndex = '10000'; // Pastikan di atas video
-    videoOverlay.appendChild(skipButton);
+    <div id="main-content">
+        <h1>Selamat Datang di Website Saya!</h1>
+        <p>Ini adalah konten utama halaman yang akan muncul setelah video intro selesai diputar.</p>
+        <img src="https://via.placeholder.com/600x400" alt="Placeholder Image">
+    </div>
 
-    skipButton.addEventListener('click', function() {
-      coverVideo.pause(); // Hentikan video
-      videoOverlay.style.display = 'none'; // Sembunyikan overlay
-    });
-    */
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoOverlay = document.getElementById('video-overlay');
+            const coverVideo = document.getElementById('cover-video');
+            const mainContent = document.getElementById('main-content'); // Dapatkan referensi ke konten utama
 
-  });
-</script>
+            // Tampilkan overlay video saat halaman dimuat
+            videoOverlay.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Pastikan scrollbar tersembunyi selama video
+
+            // Dengarkan event 'ended' pada video
+            coverVideo.addEventListener('ended', function() {
+                // Sembunyikan overlay setelah video selesai diputar
+                videoOverlay.style.display = 'none';
+                
+                // Tampilkan konten utama halaman
+                mainContent.style.display = 'block';
+                document.body.style.overflow = 'auto'; // Aktifkan kembali scrollbar jika kontennya panjang
+            });
+        });
+    </script>
+
+</body>
+</html>
   </video>
 </div>
 
@@ -262,7 +280,7 @@ body {
 <h2 class="mb-4" style="color: #f9f6f6;">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</h2>
 <blockquote class="blockquote">
 <p style="color: #f9f6f6;">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ</p>
-<p class="mt-3 fst-italic" style="color: #f9f6f6;">"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir."</p>
+<p class="mt-3 fst-italic" style="color: #f9f6f6;">"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih danayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir."</p>
 </blockquote>
 <p class="mt-4" style="color: #f9f6f6;">Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami yang InsyaAllah akan dilaksanakan pada:</p>
 </section>
