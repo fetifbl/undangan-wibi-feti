@@ -209,6 +209,50 @@ body {
 <div id="video-overlay" style="display: none; position: fixed; top:0; left:0; width: 100%; height: 100%; background-color: black; z-index: 9999;">
   <video id="cover-video" autoplay muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
     <source src="https://github.com/user-attachments/assets/1a4b31b9-2591-4fe8-b351-2ad99e797348" type="video/gif">
+ <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const videoOverlay = document.getElementById('video-overlay');
+    const coverVideo = document.getElementById('cover-video');
+
+    // Tampilkan overlay video saat halaman dimuat
+    videoOverlay.style.display = 'block'; // Mengubah display dari 'none' menjadi 'block'
+
+    // Opsional: Untuk memastikan video dimulai dari awal setiap kali halaman dimuat
+    // coverVideo.currentTime = 0; 
+    
+    // Dengarkan event 'ended' pada video
+    coverVideo.addEventListener('ended', function() {
+      // Sembunyikan overlay setelah video selesai diputar
+      videoOverlay.style.display = 'none';
+      
+      // Opsional: Hapus video dari DOM untuk membebaskan memori
+      // videoOverlay.remove();
+      
+      // Opsional: Jika ada konten lain di halaman yang harus muncul setelah video, tampilkan di sini
+      // Contoh: document.getElementById('main-content').style.display = 'block';
+    });
+
+    // Opsional: Jika Anda ingin memberikan kontrol untuk melewati video (misalnya, tombol skip)
+    // Anda bisa menambahkan tombol di dalam #video-overlay
+    // dan menambahkan event listener untuk menyembunyikan overlay saat tombol itu diklik.
+    // Contoh:
+    /*
+    const skipButton = document.createElement('button');
+    skipButton.innerText = 'Lewati Video';
+    skipButton.style.position = 'absolute';
+    skipButton.style.top = '20px';
+    skipButton.style.right = '20px';
+    skipButton.style.zIndex = '10000'; // Pastikan di atas video
+    videoOverlay.appendChild(skipButton);
+
+    skipButton.addEventListener('click', function() {
+      coverVideo.pause(); // Hentikan video
+      videoOverlay.style.display = 'none'; // Sembunyikan overlay
+    });
+    */
+
+  });
+</script>
   </video>
 </div>
 
